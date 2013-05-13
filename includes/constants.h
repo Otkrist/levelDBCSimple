@@ -1,0 +1,14 @@
+#define CREATE_OK  0
+#define CREATE_FAILURE -1
+#define DELETE_OK 0
+#define DELETE_FAILURE -1
+#define INSERT_OK 0
+#define INSERT_FAILURE -1
+#define FETCH_OK 0
+#define FETCH_FAILURE -1
+#define DICT_REMOVE_OK 0
+#define DICT_REMOVE_FAILURE -1
+#define DICT_EXISTS_OK 0
+#define DICT_EXISTS_FAILURE -1
+#define LEVELDB_AUTOCLEANUP 1
+
