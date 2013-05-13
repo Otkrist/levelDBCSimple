@@ -130,7 +130,64 @@ int LevelDict::get(const char * key, char * buffer, int buffer_size)
     }
   }
   return FETCH_FAILURE;
-} 
+}
+
+int LevelDict::put(const char * key,const int valueInt)
+{
+  if(CREATE_OK == init())
+  {
+    // This should be 66 for 8 byte platforms. But keeping 64 for optimal performance //
+    char buffer[64];
+    snprintf(buffer, 64, "%d", valueInt);
+    leveldb::Status status = db->Put(leveldb::WriteOptions(), key, buffer);
+    return status.ok() ? INSERT_OK : INSERT_FAILURE;
+  }
+  return INSERT_FAILURE;
+}
+int LevelDict::get(const char * key, int& value)
+{
+  if(CREATE_OK == init())
+  {
+    std::string str;
+    leveldb::Status status = db->Get(leveldb::ReadOptions(), key, &str);
+    if(status.ok())
+    {
+      value = atoi(str.c_str());
+      return FETCH_OK;
+    }
+  }
+  return FETCH_FAILURE;
+}
+
+int LevelDict::put(const int key,const char * value)
+{
+  if(CREATE_OK == init())
+  {
+    char buffer[64];
+    snprintf(buffer, 64, "%d", key);
+    leveldb::Status status = db->Put(leveldb::WriteOptions(), buffer, value);
+    return status.ok() ? INSERT_OK : INSERT_FAILURE;
+  }
+  return INSERT_FAILURE;
+}
+int LevelDict::get(const int key, char * value, int buffer_size)
+{
+  if(CREATE_OK == init())
+  {
+    char buffer[64];
+    snprintf(buffer, 64, "%d", key);
+    std::string str;
+    leveldb::Status status = db->Get(leveldb::ReadOptions(), buffer, &str);
+    if(status.ok())
+    {
+      strcpy(buffer, str.c_str());
+      return FETCH_OK;
+    }
+  }
+  return FETCH_FAILURE;
+}
+
+ 
 LevelDict::~LevelDict() 
 { 
   if(db!=NULL) delete db;

@@ -42,5 +42,12 @@ class LevelDict: public Dict
   // Copy the value from dictionary //
   int get(const char * key, char ** value);
   int get(const char * key, char * buffer, int buffer_size);
+
+  // Save and Get the string values by integer id //
+  int put(const int key,const char * value);
+  int get(const int key, char * buffer, int buffer_size);
   
+  // Save and get int values from string key //
+  int put(const char * key, const int key);
+  int get(const char * key, int& value);
 };
