@@ -51,4 +51,4 @@ $(TARGET_DIR)/%.c.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(CINCLUDES) -c $< -o $@ 
 
 clean:
-	rm -rf bin/* $(TEST_TARGET_DIR)/*
+	rm -rf bin/*.* $(TEST_TARGET_DIR)/*.*
