@@ -49,5 +49,5 @@ class LevelDict: public Dict
   
   // Save and get int values from string key //
   int put(const char * key, const int value);
-  int get(const char * key, int& value);
+  int get(const char * key, int * value);
 };

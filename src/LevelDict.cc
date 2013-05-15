@@ -145,7 +145,7 @@ int LevelDict::put(const char * key,const int valueInt)
   }
   return INSERT_FAILURE;
 }
-int LevelDict::get(const char * key, int& value)
+int LevelDict::get(const char * key, int * value)
 {
   if(CREATE_OK == init())
   {
@@ -153,7 +153,7 @@ int LevelDict::get(const char * key, int& value)
     leveldb::Status status = db->Get(leveldb::ReadOptions(), key, &str);
     if(status.ok())
     {
-      value = atoi(str.c_str());
+      *value = atoi(str.c_str());
       return FETCH_OK;
     }
   }

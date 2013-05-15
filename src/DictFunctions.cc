@@ -48,6 +48,30 @@ int get_from_dict_2_cc(const char * name, const char * pathname, const char * ke
   return d->get(key,buffer,buffer_size);
 }
 
+int add_int_to_dict_cc(const char * name, const char * pathname, const char * key,const int value)
+{
+  LevelDict * d = DBManager::getInstance()->getOrCreate(name,pathname);
+  return d->put(key,value);
+}
+
+int get_int_from_dict_cc(const char * name, const char * pathname, const char * key,int * value)
+{
+  LevelDict * d = DBManager::getInstance()->getOrCreate(name,pathname);
+  return d->get(key,value);
+}
+
+int add_char_from_dict_cc(const char * name, const char * pathname, const int key,char * value)
+{
+  LevelDict * d = DBManager::getInstance()->getOrCreate(name,pathname);
+  return d->put(key,value);
+}
+
+int get_char_from_dict_cc(const char * name, const char * pathname, const int key,char * buffer,int buffer_size)
+{
+  LevelDict * d = DBManager::getInstance()->getOrCreate(name,pathname);
+  return d->get(key,buffer,buffer_size);
+}
+
 int cleanUp_cc()
 {
   return DBManager::getInstance()->cleanUp();

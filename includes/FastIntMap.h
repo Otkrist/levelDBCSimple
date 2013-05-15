@@ -35,4 +35,5 @@ class FastIntMap : public FastHashMap<int,int>
   virtual void init();
   virtual void put(const int key,const int value);
   virtual const int get(const int key);
+  
 };

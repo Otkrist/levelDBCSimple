@@ -40,6 +40,26 @@ int get_from_dict_2(const char * name, const char * pathname, const char * key,c
   return get_from_dict_2_cc(name,pathname,key,buffer,buffer_size);
 }
 
+int add_int_to_dict(const char * name, const char * pathname, const char * key,const int value)
+{
+  return add_int_to_dict_cc(name,pathname,key,value);
+}
+
+int get_int_from_dict(const char * name, const char * pathname, const char * key,int * value)
+{
+  return get_int_from_dict_cc(name,pathname,key,value);
+}
+
+int add_char_from_dict(const char * name, const char * pathname, const int key,char * value)
+{
+  return add_char_from_dict_cc(name,pathname,key,value);
+}
+
+int get_char_from_dict(const char * name, const char * pathname, const int key,char * buffer,int buffer_size)
+{
+  return get_char_from_dict_cc(name,pathname,key,buffer,buffer_size); 
+}
+
 void cleanUp()
 {
   cleanUp_cc();
