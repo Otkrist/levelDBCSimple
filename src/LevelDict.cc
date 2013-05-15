@@ -1,5 +1,6 @@
 #include "constants.h"
 #include "LevelDict.h"
+#include <stdlib.h>
 
 /**
   This class encapsulates the levelDb operations we are required to make

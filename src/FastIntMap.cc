@@ -1,6 +1,7 @@
 #include "FastIntMap.h"
 #include <assert.h>
-
+#include <stdlib.h>
+#include <time.h>
 
 // The one millionth prime number
 #define DEFAULT_PRIME 15485863
