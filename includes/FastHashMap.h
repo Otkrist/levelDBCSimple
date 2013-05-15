@@ -7,6 +7,6 @@ using namespace std;
 template <class K,class V> class FastHashMap
 {
   public:
-  virtual void put(const K k,const V v);
-  virtual const V get(const K k);
+  virtual void put(const K k,const V v) = 0;
+  virtual const V get(const K k) = 0;
 };

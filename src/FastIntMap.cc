@@ -52,7 +52,7 @@ unsigned int FastIntMap::hash(const int key)
 void FastIntMap::put(const int key,const int value)
 {
   unsigned int tableIndex = hash(key);
-  if(!_table[1][tableIndex])
+  if(!_table[1][tableIndex] || _table[1][tableIndex]==key)
   {
     _table[0][tableIndex] = value;
     _table[1][tableIndex] = key;
@@ -77,6 +77,5 @@ const int FastIntMap::get(const int key)
       return collisionMap[key];
     }
   }
-  // Need a better strategy here ..//
-  return 0;
+  throw 0;
 }
