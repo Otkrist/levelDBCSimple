@@ -111,6 +111,9 @@ void testMultipleReadWrites(const int max_iter,const int tableSize)
 
 int main()
 {
-  testMultipleReadWrites(100000,pow(2,20));
+  for(int i=1;i<6;i++)
+  {
+    testMultipleReadWrites(pow(10,i),pow(2,20));
+  }
   return 0;
 }
