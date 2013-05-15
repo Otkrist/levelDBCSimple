@@ -1,5 +1,6 @@
 #include "DBManager.h"
 #include "constants.h"
+#include <stdlib.h>
 
 void LevelDB_Clean()  { DBManager::getInstance()->cleanUp(); }  // Calls CleanUp 
 DBManager * DBManager::_dbManager = NULL;
