@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include "string.h"
 #include <assert.h>
+#include <stdio.h>      /* printf, fgets */
+#include <stdlib.h>     /* atoi */
 
 #define ABORT_ON_FAILURE 0
 #define TEST_DB_NAME "testDB"
