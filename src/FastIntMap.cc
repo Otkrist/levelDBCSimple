@@ -89,5 +89,5 @@ const int FastIntMap::get(const int key)
       return (*collisionMap)[key];
     }
   }
-  return 0;
+  throw 0;
 }

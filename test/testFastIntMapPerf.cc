@@ -71,7 +71,7 @@ void testMultipleReadWrites(const int max_iter,const int tableSize)
   {
     int key = randHelper();
     int value = randHelper();
-    keys[i] = key;
+    key = keys[i];
     sum2 = sum2 + value + key;
   }
   end = clock();
