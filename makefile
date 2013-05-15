@@ -4,8 +4,8 @@ CC=gcc
 CXX=g++
 # Hey!, I am comment number 2. I want to say that CFLAGS will be the
 # options I'll pass to the compiler.
-CFLAGS=-ggdb -Wall -fPIC -O2
-CXXFLAGS=-ggdb -Wall -fPIC -O2
+CFLAGS=-ggdb -Wall -fPIC -O0
+CXXFLAGS=-ggdb -Wall -fPIC -O0
 CINCLUDES=-I ./includes/
 CXXINCLUDES=-I ../leveldb/include/ -I ./includes/
 CLDINCLUDES=../leveldb/libleveldb.a -lpthread -O2

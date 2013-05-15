@@ -14,7 +14,7 @@ class FastIntMap : public FastHashMap<int,int>
 
   int _tableSize;
   int ** _table;
-  map<int,int> collisionMap;
+  map<int,int> * collisionMap;
 
   unsigned int hash(int key);
 
@@ -29,7 +29,7 @@ class FastIntMap : public FastHashMap<int,int>
     _tableSize = tableSize;
     init();
   }
-  ~FastIntMap(){}
+  ~FastIntMap();
 
   public:
   virtual void init();

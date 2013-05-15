@@ -27,6 +27,7 @@ unsigned int getPrimeModulous(int tableSize)
 void FastIntMap::init()
 {
   // Initialize the table 
+  collisionMap = new map<int,int>();
   _table = new int*[TABLE_COLUMN_COUNT];
   for(int i=0;i<TABLE_COLUMN_COUNT;i++)
   {
@@ -44,6 +45,15 @@ void FastIntMap::init()
   b = getRand(0,p);
 }
 
+FastIntMap::~FastIntMap()
+{
+  for(int i=0;i<TABLE_COLUMN_COUNT;i++)
+  {
+    delete _table[i];
+  }
+  delete _table;
+  delete collisionMap;
+}
 
 unsigned int FastIntMap::hash(const int key)
 {
@@ -59,7 +69,7 @@ void FastIntMap::put(const int key,const int value)
   }
   else
   {
-    collisionMap[key] = value;
+    (*collisionMap)[key] = value;
   }
 }
 
@@ -74,8 +84,8 @@ const int FastIntMap::get(const int key)
     }
     else
     {
-      return collisionMap[key];
+      return (*collisionMap)[key];
     }
   }
-  throw 0;
+  return 0;
 }
