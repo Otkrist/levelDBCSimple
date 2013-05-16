@@ -42,10 +42,10 @@ int randHelper()
 {
   return rand() % 100000 + 1;
 }
-
+typedef long long ITYPE;
 void testSingleReadWrite()
 {
-  FastIntMap * intMap = new FastIntMap();
+  FastIntMap<ITYPE> * intMap = new FastIntMap<ITYPE>();
   for(int i=0;i<10;i++)
   {
     int key = randHelper();
@@ -70,7 +70,7 @@ void testMultipleReadWrites()
   int max_iter = 20000;
   char msg[200];
   int keys[max_iter]; // Make arrays to cheaply iterate over map //
-  FastIntMap * intMap = new FastIntMap();
+  FastIntMap<ITYPE> * intMap = new FastIntMap<ITYPE>();
   map<int,int> * keyValMap = new map<int,int>();
 
 

@@ -44,6 +44,7 @@ int randHelper()
   return rand() % 10000000 + 1;
 }
 
+typedef long long INTTYPE;
 /**
  * Create a dictionary full of random key value pairs.
  * Create a map for comparison, check the error rate. Print a result.
@@ -52,7 +53,7 @@ void testMultipleReadWrites(const int max_iter,const int tableSize)
 {
   int keys[max_iter]; // Make arrays to cheaply iterate over map //
   double sum = 0;
-  FastIntMap * intMap = new FastIntMap(tableSize);
+  FastIntMap<INTTYPE> * intMap = new FastIntMap<INTTYPE>(tableSize);
   clock_t begin, end;
 
   begin = clock();

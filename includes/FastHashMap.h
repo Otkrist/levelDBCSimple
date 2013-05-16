@@ -12,5 +12,5 @@ template <class K,class V> class FastHashMap
   virtual const V get(const K k) = 0;
   //map<K,V>::iterator begin();
   //map<K,V>::iterator end();
-  //map<K,V>::iterator iterator();
+  //virtual map<K,V>::iterator iterator() = 0;
 };

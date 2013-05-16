@@ -7,14 +7,14 @@
 #include "FastHashMap.h"
 #include<map>
 using namespace std;
-class FastIntMap : public FastHashMap<int,int>
+template <typename INTTYPE> class FastIntMap : public FastHashMap<INTTYPE,INTTYPE>
 {
   protected:
   unsigned int a,b,p;
 
   int _tableSize;
-  int ** _table;
-  map<int,int> * collisionMap;
+  INTTYPE ** _table;
+  map<INTTYPE,INTTYPE> * collisionMap;
 
   unsigned int hash(int key);
 
@@ -29,11 +29,20 @@ class FastIntMap : public FastHashMap<int,int>
     _tableSize = tableSize;
     init();
   }
-  ~FastIntMap();
+  ~FastIntMap()
+  {
+    for(int i=0;i<TABLE_COLUMN_COUNT;i++)
+    {
+      delete _table[i];
+    }
+    delete _table;
+    delete collisionMap;
+  }
+
 
   public:
   virtual void init();
-  virtual void put(const int key,const int value);
-  virtual const int get(const int key);
+  virtual void put(const INTTYPE key,const INTTYPE value);
+  virtual const INTTYPE get(const INTTYPE key);
   
 };

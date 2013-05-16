@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+template class FastIntMap<int>;
+template class FastIntMap<long long>;
 // The one millionth prime number
 #define DEFAULT_PRIME 15485863
 /**
@@ -25,14 +27,14 @@ unsigned int getPrimeModulous(int tableSize)
   return DEFAULT_PRIME;
 }
 
-void FastIntMap::init()
+template <typename INTTYPE> void FastIntMap<INTTYPE>::init()
 {
   // Initialize the table 
-  collisionMap = new map<int,int>();
-  _table = new int*[TABLE_COLUMN_COUNT];
+  collisionMap = new map<INTTYPE,INTTYPE>();
+  _table = new INTTYPE *[TABLE_COLUMN_COUNT];
   for(int i=0;i<TABLE_COLUMN_COUNT;i++)
   {
-    _table[i] = new int[_tableSize];
+    _table[i] = new INTTYPE[_tableSize];
     for(int k=0;k<_tableSize;k++)
     {
       _table[i][k] = 0;
@@ -46,21 +48,11 @@ void FastIntMap::init()
   b = getRand(0,p);
 }
 
-FastIntMap::~FastIntMap()
-{
-  for(int i=0;i<TABLE_COLUMN_COUNT;i++)
-  {
-    delete _table[i];
-  }
-  delete _table;
-  delete collisionMap;
-}
-
-unsigned int FastIntMap::hash(const int key)
+template <typename INTTYPE> unsigned int FastIntMap<INTTYPE>::hash(const int key)
 {
   return ((a*key+b) % p) % _tableSize;
 }
-void FastIntMap::put(const int key,const int value)
+template <typename INTTYPE> void FastIntMap<INTTYPE>::put(const INTTYPE key,const INTTYPE value)
 {
   unsigned int tableIndex = hash(key);
   if(key && (!_table[1][tableIndex] || _table[1][tableIndex]==key))
@@ -74,7 +66,7 @@ void FastIntMap::put(const int key,const int value)
   }
 }
 
-const int FastIntMap::get(const int key)
+template <typename INTTYPE> const INTTYPE FastIntMap<INTTYPE>::get(const INTTYPE key)
 {
   if(key==0) return (*collisionMap)[key];
 
