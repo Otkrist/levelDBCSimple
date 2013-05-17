@@ -11,7 +11,7 @@ CXXINCLUDES=-I ../leveldb/include/ -I ./includes/
 CLDINCLUDES=../leveldb/libleveldb.a -lpthread -O2
 CXXLDINCLUDES=../leveldb/libleveldb.a -lpthread -O2
 
-COBJS=bin/QLevelDB.c.o
+COBJS=bin/QLevelDB.c.o bin/leveldbcxx.a
 CXXOBJS=bin/LevelDict.cc.o bin/DictFunctions.cc.o bin/DBManager.cc.o bin/FastIntMap.cc.o
 TEST_DIR=test
 SRC_DIR=src
